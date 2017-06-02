@@ -1,4 +1,6 @@
 # Getting Setup with Singularity
+*This is a guide to getting started with [Singularity containers](http://singularity.lbl.gov/) in conjunction with Dartmouth College's [Discovery HPC](http://techdoc.dartmouth.edu/discovery/).  
+Questions can be addressed to eshin.jolly@gr.dartmouth.edu or mvdoc.gr@dartmouth.edu. We're not experts but we're happy to try to help!*
 
 #### [I. Pre-requisites (OSX only)](#prereqs)
 #### [II. Creating a Singularity container](#creation)
