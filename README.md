@@ -1,6 +1,6 @@
 # Getting Setup with Singularity
 *This is a guide to getting started with [Singularity containers](http://singularity.lbl.gov/) in conjunction with Dartmouth College's [Discovery HPC](http://techdoc.dartmouth.edu/discovery/).  
-Questions can be addressed to eshin.jolly@gr.dartmouth.edu or mvdoc.gr@dartmouth.edu.  
+Questions can be addressed to eshin.jolly.gr@dartmouth.edu or mvdoc.gr@dartmouth.edu.  
 We're not experts but we're happy to try to help!*
 
 #### [I. Pre-requisites (OSX only)](#prereqs)
@@ -230,5 +230,5 @@ Much of this tutorial is borrowed/integrated from several helpful resources:
 [Discovery Documentation](http://techdoc.dartmouth.edu/discovery/)
 
 #### Sharing is caring
-[Singularity hub](https://singularity-hub.org/)
+[Singularity hub](https://singularity-hub.org/)  
 [Docker hub](https://hub.docker.com/)
