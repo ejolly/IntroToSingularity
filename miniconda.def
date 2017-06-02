@@ -1,6 +1,6 @@
 # Singularity definition example with miniconda
-# Matteo Visconti di Oleggio Castello
-# mvdoc.gr@dartmouth.edu
+# Matteo Visconti di Oleggio Castello; Eshin Jolly
+# mvdoc.gr@dartmouth.edu; eshin.jolly.gr@dartmouth.edu
 # May 2017
 
 bootstrap: docker
@@ -38,4 +38,5 @@ from: neurodebian:jessie
     if [ ! -d /scripts ]; then mkdir /scripts; fi
 
 %runscript
+    echo "Now inside Singularity container woah..."
     exec /bin/bash
