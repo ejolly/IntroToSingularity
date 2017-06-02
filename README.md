@@ -1,11 +1,15 @@
 # Getting Setup with Singularity
 *This is a guide to getting started with [Singularity containers](http://singularity.lbl.gov/) in conjunction with Dartmouth College's [Discovery HPC](http://techdoc.dartmouth.edu/discovery/).  
-Questions can be addressed to eshin.jolly@gr.dartmouth.edu or mvdoc.gr@dartmouth.edu. We're not experts but we're happy to try to help!*
+Questions can be addressed to eshin.jolly@gr.dartmouth.edu or mvdoc.gr@dartmouth.edu.  
+We're not experts but we're happy to try to help!*
 
 #### [I. Pre-requisites (OSX only)](#prereqs)
 #### [II. Creating a Singularity container](#creation)
-#### [III. Working with a container](#using)
-#### [IV. Extra resources](#resources)
+#### [III. Basic container usage](#basicusage)
+#### [IV. Using a container on Discovery](#discovery)
+#### [V. Updating an existing container](#updating)
+#### [VI. Sharing containers](#sharing)
+#### [VII. Extra resources](#resources)
 
 
 ## <a name="prereqs"></a> Pre-requisites (OSX only!)
@@ -115,9 +119,8 @@ Finally lets actually build the container using our definition file. The amount 
 sudo singularity bootstrap miniconda.img miniconda.def
 ```
 
-## <a name="using"></a>Working with a container
+## <a name="basicusage"></a>Basic container usage  
 
-### Basic usage
 If all went well we should be able to issue a python command to the python version installed *within* our container like so:
 ```
 singularity exec miniconda.img python -c 'print "Hello from Singularity!"'
@@ -135,10 +138,11 @@ Most commonly you'll use one of three commands with a container:
 `singularity shell` similar to above, but specifically open up a shell within the container  
 
 A few other useful flags include:
-`-B` mount an external folder to the container
-`-c` don't automatically map /home and /tmp to shared folders with the host OS
+`-B` mount an external folder to the container  
+`-c` don't automatically map /home and /tmp to shared folders with the host OS  
 
-### Use on the Discovery cluster
+## <a name="discovery"></a>Using a container on Discovery  
+
 In order to use a container on Discovery you have to first upload the generated .img file to your home directory. Since containers can be rather large lets compress this and then uncompress on Discovery (starting with Singularity >=2.3.0 this functionality works through `import` and `export` commands)
 ```
 tar -cvzf miniconda.tar.gz miniconda.img
@@ -181,26 +185,15 @@ Now we issue a command to our container (e.g. when submitting a job) like this:
 
 We can also use our container interactively with. Here let's actually serve a jupyter notebook server from the cluster and interact with it using our local web browser. To do so we need to reconnect to Discovery with port-forwarding.  The demo container here isn't built with a jupyter notebook so this won't work, but we you can use the same command when building your own container
 ```  
+# You should really connect to something other than the head node here!
 ssh ejolly@discovery.dartmouth.edu -L 127.0.0.1:3129:127.0.0.1:9999
+
 ./exec_miniconda jupyter notebook --no-browser --port=9999
 # On local machine navigate to localhost:3129 in a web browser
 ```
 
-### Sharing containers on singularity hub
+## <a name="updating"></a>Updating an existing container  
 
-One of the nice things about using singularity (and containers in general) is that you can share your analysis environment with others. These are served on [Singularity hub](https://singularity-hub.org). Many prebuilt containers already exist that you easily download and use.
-
-Let's say we want to use this [container](https://singularity-hub.org/containers/105/) prebuilt with tensor flow for GPUs. This is as simple as:
-```
-singularity pull shub://researchapps/tensorflow:gpu
-```
-Then you can setup run and execute scripts like above to use it on Discovery.
-
-You can also easily share you custom container on Singularity hub by committing your singularity definition file to github and flipping the switch for that repository on singularity hub.
-
-
-
-### Updating/Modifying an existing container
 The preferred way to update a container is to modify the definition file and rebuild the image using the steps above. This ensures that any container image is always a product of its definition file and is therefore easy to reproduce.
 
 However, singularity makes it easy to make changes to an existing container as well using the `--writable` flag with the `exec`, `run`, or `shell` commands, e.g.
@@ -212,6 +205,18 @@ You can also increase the size of an existing container with the `expand` comman
 #Expand a container by 2gb
 singularity expand --size 2048 miniconda.img
 ```
+
+## <a name="sharing"></a>Sharing containers  
+
+One of the nice things about using singularity (and containers in general) is that you can share your analysis environment with others. These are served on [Singularity hub](https://singularity-hub.org). Many prebuilt containers already exist that you easily download and use.
+
+Let's say we want to use this [container](https://singularity-hub.org/containers/105/) prebuilt with tensor flow for GPUs. This is as simple as:
+```
+singularity pull shub://researchapps/tensorflow:gpu
+```
+Then you can setup run and execute scripts like above to use it on Discovery.
+
+You can also easily share you custom container on Singularity hub by committing your singularity definition file to github and flipping the switch for that repository on singularity hub.
 
 ## <a name="resources"></a>Extra resources
 Much of this tutorial is borrowed/integrated from several helpful resources:
