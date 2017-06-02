@@ -219,7 +219,7 @@ Much of this tutorial is borrowed/integrated from several helpful resources:
 [Jin Cheong's quick guide to using the discovery cluster](http://jinhyuncheong.com/jekyll/update/2016/07/24/How-to-use-the-Discovery-cluster.html)
 
 #### More comprehensive guides
-[Singularity Documentation](http://singularity.lbl.gov/quickstart)
+[Singularity Documentation](http://singularity.lbl.gov/quickstart)  
 [Discovery Documentation](http://techdoc.dartmouth.edu/discovery/)
 
 #### Sharing is caring
