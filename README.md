@@ -128,8 +128,8 @@ conda list
 Press `ctrl+d` to exit the container.
 
 Most commonly you'll use one of three commands with a container:  
-`singularity exec` to run a specific command/file/script using the container
-`singularity run` to move into a container and use it interactively; what gets run by this command is dictated by your singularity *definition* file
+`singularity exec` to run a specific command/file/script using the container  
+`singularity run` to move into a container and use it interactively; what   gets run by this command is dictated by your singularity *definition* file  
 `singularity shell` similar to above, but specifically open up a shell within the container  
 
 A few other useful flags include:
