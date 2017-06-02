@@ -215,7 +215,7 @@ singularity expand --size 2048 miniconda.img
 Much of this tutorial is borrowed/integrated from several helpful resources:
 
 #### Quick guides
-[Matteo Visconti's blogpost on getting started with singularity](http://mvdoc.me/2017/using-singularity-to-make-analyses-reproducible.html)
+[Matteo Visconti's blogpost on getting started with singularity](http://mvdoc.me/2017/using-singularity-to-make-analyses-reproducible.html)  
 [Jin Cheong's quick guide to using the discovery cluster](http://jinhyuncheong.com/jekyll/update/2016/07/24/How-to-use-the-Discovery-cluster.html)
 
 #### More comprehensive guides
