@@ -186,7 +186,7 @@ Now we issue a command to our container (e.g. when submitting a job) like this:
 We can also use our container interactively with. Here let's actually serve a jupyter notebook server from the cluster and interact with it using our local web browser. To do so we need to reconnect to Discovery with port-forwarding.  The demo container here isn't built with a jupyter notebook so this won't work, but we you can use the same command when building your own container
 ```  
 # You should really connect to something other than the head node here!
-ssh ejolly@discovery.dartmouth.edu -L 127.0.0.1:3129:127.0.0.1:9999
+ssh ejolly@discovery.dartmouth.edu -N -f -L localhost:3129:localhost:9999
 
 ./exec_miniconda jupyter notebook --no-browser --port=9999
 # On local machine navigate to localhost:3129 in a web browser
