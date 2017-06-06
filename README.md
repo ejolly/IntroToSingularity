@@ -79,7 +79,7 @@ from: neurodebian:jessie
     apt-get install -y eatmydata
     eatmydata apt-get install -y wget bzip2 \
       ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 \
-      git git-annex
+      git git-annex-standalone
     apt-get clean
 
     # install anaconda
