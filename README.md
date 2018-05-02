@@ -40,7 +40,7 @@ cd singularity-vm
 ```
 Now lets download a *vagrantfile* for a prebuilt Ubuntu system that already has singularity installed.
 ```
-vagrant init singularityware/singularity-2.3
+vagrant init singularityware/singularity-2.4
 ```
 Finally we can start up virtual machine and move into it.
 ```  
@@ -70,7 +70,7 @@ Let's save this to a file called `miniconda.def`
 bootstrap: docker
 from: neurodebian:jessie
 
-# this command assumes singularity 2.3
+# this command assumes at least singularity 2.3
 %environment
     PATH="/usr/local/anaconda/bin:$PATH"
 %post
