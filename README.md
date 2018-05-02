@@ -112,11 +112,8 @@ Now lets use our vagrant vm and create a blank singularity image allocating 4gb 
 vagrant up
 vagrant ssh
 cd /vagrant/miniconda
-sudo singularity create --size 4096 miniconda.img
-```
-Finally lets actually build the container using our definition file. The amount of time it takes to build a container will vary wildly depending on what different programs you install and how fast your internet connection is.
-```
-sudo singularity bootstrap miniconda.img miniconda.def
+# Now let's build it!
+sudo singularity build miniconda.img miniconda.def
 ```
 
 ## <a name="basicusage"></a>Basic container usage  
@@ -153,9 +150,6 @@ tar -xvzf miniconda.tar.gz
 Now you can utilize the container by loading the singularity module and utilizing any of the singularity commands above. There is **one catch** however: by default singularity will try to melt together any environment variables defined in your account on discovery with environment variables defined within the container. The rationale behind this is that singularity offers the ability to *seamlessly* blend a custom environment (i.e. your container built with all your goodies) and the functionality of your HPC (i.e. all the goodies that already exist on Discovery). However, often times you want to turn this functionality off and only use environment variables within your container to avoid conflicts (i.e. completely ignore environment variables set on Discovery). Here's how we do that:
 ```  
 module load singularity
-
-env -i `which singularity` run miniconda.img
-#Or on singularity >=2.3.0
 singularity run -e miniconda.img
 ```
 
@@ -163,7 +157,7 @@ To make our lives easier we can create a simple bash script that executes a comm
 Let's save the following code into a bash file called: exec_miniconda
 ```  
 #!/bin/bash
-env -i `which singularity` exec \
+singularity -e  exec \
     -B /idata/lchang/Projects:/data \
     -B /ihome/ejolly/scripts/:/scripts \
     miniconda.img "$@"
@@ -171,7 +165,7 @@ env -i `which singularity` exec \
 Let's save the following code into a bash file called: interact_miniconda
 ```  
 #!/bin/bash
-env -i `which singularity` run \
+singularity -e run \
 	-c \
 	-B /idata/lchang/Projects/Pinel:/data \
 	-B ~/scripts:/scripts \
